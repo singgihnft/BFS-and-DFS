@@ -26,21 +26,22 @@ def bfs_lintasan_terpendek(graph, mulai, goal):
     while queue:
         # masukkan antrian paling depan ke variabel jalur
         jalur = queue.pop(0)
-        # simpan node yang dipilih ke variabel state
+        # ambil node terakhir dari jalur
         node = jalur[-1]
+        # jika node tidak sama dengan tujuan, maka cek apakah node tidak ada di explored
         if node not in explored:
-            neighbours = graph[node]
+            neighbours = graph[node] #Memasukan semua isi graph node kedalam neighbours
             # buat jalur baru dan
             # masukan ke dalam queue
-            for neighbour in neighbours:
-                jalur_baru = list(jalur)
-                jalur_baru.append(neighbour)
-                queue.append(jalur_baru)
-                # kembali ke jalur apa bila cabang benar
+            for neighbour in neighbours: #cek semua neighbout dari graph node
+                jalur_baru = list(jalur) #Memasukan isi dari vaariabel jalur ke variabel jalur baru
+                jalur_baru.append(neighbour) #update/tambah isi dari jalur baru dengan neighbour
+                queue.append(jalur_baru) #update/tambah isi dari queue dengan jalur baru
+                #cek neighbour apakah sama dengan tujuan, jika ya maka return jalur baru
                 if neighbour == goal:
-                    return jalur_baru
+                    return jalur_baru # kembali ke jalur apa bila cabang benar
 
-            explored.append(node)
+            explored.append(node) #update/tambah isi dari explored dengan node
 
     # dalam kasus ini tidak ada node yg diinputkan
     return "Mohon maaf node yang kalian pilih tidak ada"
@@ -49,4 +50,4 @@ def bfs_lintasan_terpendek(graph, mulai, goal):
 awal = input("Masukan awal: ")
 tujuan = input("Masukan Akhir: ")
 
-print(bfs_lintasan_terpendek(peta, awal, tujuan))
+print(bfs_lintasan_terpendek(peta, awal, tujuan)) #contoh kasus dari C ke L
