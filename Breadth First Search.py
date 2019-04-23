@@ -1,11 +1,11 @@
 peta = {'A':set(['B']),
         'B':set(['C','A']),
-        'C':set(['B','H','I','D']),
+        'C':set(['H','B','I','D']),
         'D':set(['C','E','H','F']),
         'E':set(['D']),
         'F':set(['D','G']),
         'G':set(['F','H']),
-        'H':set(['D','C','G','L']),
+        'H':set(['L','C','G','D']),
         'I':set(['C','J','K']),
         'J':set(['I']),
         'K':set(['L','I']),
@@ -39,7 +39,7 @@ def bfs_lintasan_terpendek(graph, mulai, goal):
                 queue.append(jalur_baru) #update/tambah isi dari queue dengan jalur baru
                 #cek neighbour apakah sama dengan tujuan, jika ya maka return jalur baru
                 if neighbour == goal:
-                    return jalur_baru # kembali ke jalur apa bila cabang benar
+                    return jalur_baru # kembali ke jalur baru apa bila neighbour benar
 
             explored.append(node) #update/tambah isi dari explored dengan node
 
